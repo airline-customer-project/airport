@@ -3,6 +3,9 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -47,12 +50,8 @@ public class SearchPanel extends JPanel {
 			"state_name_eng",
 	};
 	
-	
-	private void init() {
+	public void resultToData(ResultSet rs, ArrayList<Airport> arraylist) {
 		try {
-			Statement mysql = MysqlConnection.getInstance().mysql;
-			ResultSet rs =  mysql.executeQuery(AirportController.GET_ALL);
-
 			while (rs.next()) {		
 				String id = rs.getString("id");;
 				String airport_name_eng = rs.getString("airport_name_eng");
@@ -75,8 +74,19 @@ public class SearchPanel extends JPanel {
 						country_name_kor, 
 						state_name_eng
 				));
-				this.filteredAirportList = this.airportList;
 			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void init() {
+		try {
+			Statement mysql = MysqlConnection.getInstance().mysql;
+			ResultSet rs =  mysql.executeQuery(AirportController.GET_ALL);
+			resultToData(rs, this.airportList);
+			this.filteredAirportList = this.airportList;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception
@@ -95,15 +105,29 @@ public class SearchPanel extends JPanel {
 			content[index++] = airport.getArray();
 		}
 
-		JTable table = new JTable(content, header);
+		JTable table = new JTable(content, header) {
+			 public boolean editCellAt(int row, int column, java.util.EventObject e) {
+	            return false;
+	        }
+		};
 		this.table = new JScrollPane(table);
+		
+		
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent me) {
+				if(me.getClickCount() == 2) {
+					System.out.println("???");
+					new AirportDetailDialog(table.getValueAt(table.getSelectedRow(), 0).toString());
+				}
+			}
+		});
 		
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				// TODO Auto-generated method stub
-				new AirportDetailDialog(table.getValueAt(table.getSelectedRow(), 0).toString());
+				
 			}
 		});
 		
@@ -117,29 +141,8 @@ public class SearchPanel extends JPanel {
 			Statement mysql = MysqlConnection.getInstance().mysql;
 			ResultSet rs =  mysql.executeQuery(AirportController.GET_ALL_BY_FILTER(filter, keyword));
 			this.filteredAirportList = new ArrayList<Airport>();
-			while (rs.next()) {
-				String id = rs.getString("id");;
-				String airport_name_eng = rs.getString("airport_name_eng");
-				String airport_name_kor = rs.getString("airport_name_kor");
-				String iata = rs.getString("iata");
-			    String leco = rs.getString("leco");
-				String region = rs.getString("region");
-				String country_name_eng = rs.getString("country_name_eng");
-				String country_name_kor = rs.getString("country_name_kor");
-				String state_name_eng = rs.getString("state_name_eng");
-
-				this.filteredAirportList.add(new Airport(
-						id, 
-						airport_name_eng, 
-						airport_name_kor,
-						iata, 
-						leco, 
-						region, 
-						country_name_eng, 
-						country_name_kor, 
-						state_name_eng
-				));
-			}
+			resultToData(rs, this.filteredAirportList);
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception
