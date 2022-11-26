@@ -10,6 +10,8 @@ public class Airport {
 	public String country_name_eng;
 	public String country_name_kor;
 	public String state_name_eng;
+	public String lat;
+	public String lng;
 	
 	public Airport (
 			String id, 
@@ -20,7 +22,9 @@ public class Airport {
 			String region,
 			String country_name_eng,
 			String country_name_kor,
-			String state_name_eng
+			String state_name_eng,
+			String lat,
+			String lng
 	) {
 		this.id = id;
 		this.airport_name_eng = airport_name_eng;
@@ -31,6 +35,8 @@ public class Airport {
 		this.country_name_eng = country_name_eng;
 		this.country_name_kor = country_name_kor;
 		this.state_name_eng = state_name_eng;
+		this.lat = lat;
+		this.lng = lng;
 	}
 	
 	@Override

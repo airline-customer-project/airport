@@ -45,14 +45,15 @@ public class GoogleMapsScene extends Application{
         }
         return singleton;
     }
-    public static GoogleMapsScene launch(File maps_html, String... args) throws InterruptedException{
+    public static GoogleMapsScene launch(File maps_html, String lat, String lng, String... args) throws InterruptedException{
         if(singleton!=null){
             throw new IllegalArgumentException("You can have only one instance of this class, call without args getInstance()");
         }
-        GoogleMapsScene.maps_html = maps_html.exists() ? maps_html : new File("./html/maps.html");
+        GoogleMapsScene.maps_html = maps_html.exists() ? maps_html : new File("./maps.html");
         Executors.newSingleThreadExecutor().execute(()->{
             Application.launch(GoogleMapsScene.class, args);
         });
+
         int time_out_count = 0;
         while(singleton==null && time_out_count<100){
             Thread.sleep(100);
@@ -150,6 +151,7 @@ public class GoogleMapsScene extends Application{
         });
     }
     public void setCenter(double lat, double lng){
+    	System.out.println(lat);
         Platform.runLater(()->{
             engine.executeScript("map.setCenter({lat: "+lat+", lng: "+lng+"})");
         });

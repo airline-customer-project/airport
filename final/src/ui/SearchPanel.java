@@ -62,8 +62,10 @@ public class SearchPanel extends JPanel {
 				String country_name_eng = rs.getString("country_name_eng");
 				String country_name_kor = rs.getString("country_name_kor");
 				String state_name_eng = rs.getString("state_name_eng");
+				String lat = rs.getString("lat");
+				String lng = rs.getString("lng");
 				
-				this.airportList.add(new Airport(
+				arraylist.add(new Airport(
 						id, 
 						airport_name_eng, 
 						airport_name_kor,
@@ -72,7 +74,9 @@ public class SearchPanel extends JPanel {
 						region, 
 						country_name_eng, 
 						country_name_kor, 
-						state_name_eng
+						state_name_eng,
+						lat,
+						lng
 				));
 			}
 		} catch(Exception e) {
@@ -142,7 +146,6 @@ public class SearchPanel extends JPanel {
 			ResultSet rs =  mysql.executeQuery(AirportController.GET_ALL_BY_FILTER(filter, keyword));
 			this.filteredAirportList = new ArrayList<Airport>();
 			resultToData(rs, this.filteredAirportList);
-			
 		}catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception

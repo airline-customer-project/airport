@@ -17,17 +17,7 @@ public class MainFrame extends JFrame {
 		add(this.currentPanel, BorderLayout.CENTER);
 		setBackground(Color.YELLOW);
 		this.getContentPane().setBackground(Color.white);
-		/*
-		try {
-			final GoogleMapsScene api = GoogleMapsScene.launch(new File("C:\\Users\\hansi\\git\\airport\\final\\src\\ui\\map.html"), args);
-		    JFXPanel fxPanel = new JFXPanel();
-		    api.attach(fxPanel);
-		    add(fxPanel, BorderLayout.EAST);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace(); 
-		}    
-	    */
+		
 		setVisible(true);
 	}
 	
