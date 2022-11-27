@@ -17,9 +17,10 @@ public class LeftNavigation extends JPanel{
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		this.add(new LeftNavigationButton("공항검색", parent));
-		this.add(new LeftNavigationButton("통계", parent));
 		this.add(new LeftNavigationButton("즐겨찾기", parent));
-		this.add(new LeftNavigationButton("거리계산", parent));
+		this.add(new LeftNavigationButton("대륙별 통계", parent));
+		this.add(new LeftNavigationButton("국가별 통계", parent));
+
 
 		setVisible(true);
 	}

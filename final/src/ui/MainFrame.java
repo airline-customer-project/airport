@@ -27,10 +27,10 @@ public class MainFrame extends JFrame {
 			this.currentPanel = new SearchPanel();
 		}else if(name == "즐겨찾기") {
 			this.currentPanel = new FavoritePanel();
-		}else if(name == "통계") {
-			this.currentPanel = new StatisticsPanel();
+		}else if(name == "국가별 통계") {
+			this.currentPanel = new StatisticsPanel(new CountryChartPanel());
 		}else {
-			
+			this.currentPanel = new StatisticsPanel(new RegionChartPanel());
 		}
 		this.getContentPane().add(this.currentPanel);
 		setVisible(true);

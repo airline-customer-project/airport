@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import controller.MysqlConnection;
 import controller.StatisticsController;
 import dto.Airport;
 import dto.Statistic;
+import javafx.scene.layout.Border;
 
 public class StatisticsPanel extends JPanel {
 	public static String QUERY_COUNTRY = "country";
@@ -39,9 +41,11 @@ public class StatisticsPanel extends JPanel {
 			// TODO: handle exception
 		}
 	}
-	public StatisticsPanel() {
+	public StatisticsPanel(JPanel jpanel) {
 		// TODO Auto-generated constructor stub
-		add(new JLabel("Statistics Panel"));
+		this.setLayout(new BorderLayout());
+		add(new JLabel("Statistics Panel"), BorderLayout.NORTH);
+		add(jpanel, BorderLayout.CENTER);
 		
 		getStatisticsData(QUERY_COUNTRY);
 		
