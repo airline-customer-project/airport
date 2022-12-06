@@ -15,8 +15,10 @@ public class LeftNavigationButton extends JButton implements MouseListener {
  		this.parent = parent;
 		// TODO Auto-generated constructor stub
  		setText(name);
-
-		setPreferredSize(new Dimension(820, 26));
+		setPreferredSize(new Dimension(860, 26));
+		//820,26 기본
+		//setSize(140,26);
+		//크기 조정 추가
 		
 		setVisible(true);
 		addMouseListener(this);

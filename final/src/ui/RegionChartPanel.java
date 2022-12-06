@@ -18,7 +18,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class RegionChartPanel extends JPanel{
+public class RegionChartPanel extends JPanel implements Chart{
 	private Map<String, Integer> region = new LinkedHashMap<String, Integer>();
 	//국가별 데이터를 저장
 	//static으로 했으나 get문을 만들거나 해서 변경 여부 있음
@@ -50,12 +50,13 @@ public class RegionChartPanel extends JPanel{
 		repaint();
 		//이거 써도 되나
 	}
+	/*
 	public Color selectColor(String name, Map<String, Integer> bar) {
         Integer maxKey = Collections.max(bar.values());
         Integer minKey  = Collections.min(bar.values());
         return bar.get(name) == maxKey || bar.get(name) == minKey ? Color.red : Color.blue;
         //최대, 최솟값의 색을 다르게 설정
-	}
+	}*/
 	@Override
 	protected void paintComponent(Graphics g) {
 		int max = Integer.MIN_VALUE;

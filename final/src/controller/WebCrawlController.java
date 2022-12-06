@@ -41,6 +41,7 @@ public class WebCrawlController {
 	
 	public WebCrawlController() {
 		final String inflearnUrl = "https://www.airport.kr/ap_cnt/ko/svc/covid19/kdca/kdca.do";
+		//https://www.data.go.kr/data/15085787/openapi.do 에서 국가별 해외입국자 조치사항 표를 만들 수 있음
         Connection conn = Jsoup.connect(inflearnUrl);
        
         try {
