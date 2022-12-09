@@ -26,11 +26,6 @@ public class FavoritePanel extends SearchPanel {
 	
 	public FavoritePanel() {
 		// TODO Auto-generated constructor stub
-		init();
-		setLayout(new BorderLayout());
-		buildDropdown();
-		buildTable();
-		buildCSVButton();
-		setVisible(true);
+		super();
 	}
 }

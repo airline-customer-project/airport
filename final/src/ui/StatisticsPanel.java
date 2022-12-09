@@ -1,4 +1,4 @@
-package ui;
+  package ui;
 
 import java.awt.BorderLayout;
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ import dto.Airport;
 import dto.Statistic;
 import javafx.scene.layout.Border;
 
-public class StatisticsPanel extends JPanel {
+public class StatisticsPanel extends JPanel{
 	public static String QUERY_COUNTRY = "country";
 	public static String QUERY_REGION = "region";
 	ArrayList<Statistic> statisticList = new ArrayList<Statistic>();

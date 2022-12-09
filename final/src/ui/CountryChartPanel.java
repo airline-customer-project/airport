@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CountryChartPanel extends JPanel{
+public class CountryChartPanel extends JPanel implements Chart{
 	private JScrollPane scroll;
 	private Map<String, Integer> country = new LinkedHashMap<String, Integer>();
 	//국가별 데이터를 저장
@@ -56,14 +56,14 @@ public class CountryChartPanel extends JPanel{
 		}
 
 	}
-	
+	/*
 	public Color selectColor(String name, Map<String, Integer> bar) {
         Integer maxKey = Collections.max(bar.values());
         Integer minKey  = Collections.min(bar.values());
         return bar.get(name) == maxKey || bar.get(name) == minKey ? Color.red : Color.blue;
         //최대, 최솟값의 색을 다르게 설정
-	}
-	
+	} //인터페이스를 활용하여 재구성
+	*/
 	@Override
 	protected void paintComponent(Graphics g) {
 		
