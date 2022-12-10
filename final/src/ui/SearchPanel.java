@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -45,16 +46,16 @@ public class SearchPanel extends JPanel {
 	ArrayList<Airport> filteredAirportList = new ArrayList<Airport>();
 	JScrollPane table = null;
 	
-	String header[] = {
-			"id", 
-			"airport_name_neg", 
-			"airport_name_kor", 
-			"iata", 
-			"leco", 
-			"region", 
-			"country_name_eng",
-			"country_name_kor",
-			"state_name_eng",
+	String[] header = new String[]{
+		"id",
+		"공항 이름(영문)",
+		"공항 이름(한글)",
+		"IATA",
+		"LECO",
+		"대륙",
+		"나라 이름(영문)",
+		"나라 이름(한글)",
+		"도시 이름(영문)",
 	};
 	
 	public void resultToData(ResultSet rs, ArrayList<Airport> arraylist) {
