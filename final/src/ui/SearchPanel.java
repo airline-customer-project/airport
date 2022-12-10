@@ -25,13 +25,20 @@ import lib.CSVBuilder;
 
 public class SearchPanel extends JPanel {
 	String filter[] = {
-			"iata", 
-			"airport_name_eng", 
-			"airport_name_kor", 
-			"country_name_eng", 
-			"country_name_kor", 
-			"region",
-			"state_name_eng"
+			// "iata", 
+			// "airport_name_eng", 
+			// "airport_name_kor", 
+			// "country_name_eng", 
+			// "country_name_kor", 
+			// "region",
+			// "state_name_eng"
+			"IATA", 
+			"공항 이름(영문)", 
+			"공항 이름(한글)", 
+			"나라 이름(영문)", 
+			"나라 이름(한글)", 
+			"대륙",
+			"도시 이름(영문)"
 	};
 	
 	ArrayList<Airport> airportList = new ArrayList<Airport>();
@@ -120,7 +127,6 @@ public class SearchPanel extends JPanel {
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
 				if(me.getClickCount() == 2) {
-					System.out.println("???");
 					new AirportDetailDialog(table.getValueAt(table.getSelectedRow(), 0).toString());
 				}
 			}
@@ -163,8 +169,18 @@ public class SearchPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				String[] temp = new String[]{
+					"iata", 
+					"airport_name_eng", 
+					"airport_name_kor", 
+					"country_name_eng", 
+					"country_name_kor", 
+					"region",
+					"state_name_eng"
+				};
+				
 				filterData(
-						dropdown.getItemAt(dropdown.getSelectedIndex()),
+						temp[dropdown.getSelectedIndex()],
 						textField.getText()
 				);
 				buildTable();
