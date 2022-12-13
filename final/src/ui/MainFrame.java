@@ -39,12 +39,14 @@ public class MainFrame extends JFrame {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			//UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarkLaf" );
 			//set look and feel 
 			MainFrame mf = new MainFrame(args);
 			mf.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			System.out.println("가나다라마바사");
 		} catch (Exception e) {
+			
 		}
 		/*
 		MainFrame mf = new MainFrame(args);

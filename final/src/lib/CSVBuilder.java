@@ -15,10 +15,12 @@ import dto.Airport;
 public class CSVBuilder {
 	Path relativePath = Paths.get("");
 	String path = relativePath.toAbsolutePath().toString();
-	File csv = new File(path + "test.csv");
+	//File csv = new File(path + "test.csv");
+	File csv = new File(path + "공항정보-"+ System.currentTimeMillis() + ".csv");
 	BufferedWriter bw = null;
 	
 	public void downloadAirport(ArrayList<Airport> airportList) {
+		System.out.println(path);
 		try {
 			this.bw = new BufferedWriter(new FileWriter(this.csv, true));
 			for(Airport airport : airportList) {
