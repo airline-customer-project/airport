@@ -33,7 +33,7 @@ import netscape.javascript.JSObject;
 
 public class GoogleMapsScene extends Application{
     private static GoogleMapsScene singleton;
-    private static File maps_html;
+    private static File map_html;
     private WebView browser;
     private WebEngine engine;
     private Scene scene;
@@ -45,11 +45,11 @@ public class GoogleMapsScene extends Application{
         }
         return singleton;
     }
-    public static GoogleMapsScene launch(File maps_html, String lat, String lng, String... args) throws InterruptedException{
+    public static GoogleMapsScene launch(File map_html, String lat, String lng, String... args) throws InterruptedException{
         if(singleton!=null){
             throw new IllegalArgumentException("You can have only one instance of this class, call without args getInstance()");
         }
-        GoogleMapsScene.maps_html = maps_html.exists() ? maps_html : new File("./maps.html");
+        GoogleMapsScene.map_html = map_html.exists() ? map_html : new File("./map.html");
         Executors.newSingleThreadExecutor().execute(()->{
             Application.launch(GoogleMapsScene.class, args);
         });
@@ -72,7 +72,7 @@ public class GoogleMapsScene extends Application{
         engine = browser.getEngine();
         engine.setJavaScriptEnabled(true);
         //System.out.println(this.maps_html);
-        engine.load(maps_html.toURI().toString());
+        engine.load(map_html.toURI().toString());
         scene = new Scene(browser);//,1200,720);
         singleton = this;
     }

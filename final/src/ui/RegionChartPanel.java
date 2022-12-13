@@ -10,6 +10,7 @@ import dto.Airport;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -79,7 +80,7 @@ public class RegionChartPanel extends JPanel implements Chart{
 			//1인경우 아예 그래프가 나오질 않아서 간단하게 조절해주는 코드, 50부분을 변경하면 원하는 크기로 설정 가능
 			//즐겨찾기 같은 경우는 개수가 적으니 즐겨찾기 그래프 기능 추가 시 해당 코드 삭제 요망 
 			
-			int height = (int)((getHeight()-20)*((double)value / max));
+			int height = (int)((getHeight()-80)*((double)value / max));
 			
 			g.setColor(selectColor(name, region));
 		
@@ -88,12 +89,15 @@ public class RegionChartPanel extends JPanel implements Chart{
 			g.setColor(selectColor(name, region));
 			g.drawRect(x, getHeight() - height - 50, width, height);
 			
-			
-			g.setColor(Color.black);
+			g.setFont(new Font("남고딕",Font.PLAIN,15));
+			g.setColor((new Color(241,250,238)));
 			g.drawString(name, x, getHeight() - 30);
+			
+			
 			//윤곽선
 			x += (width + 10);
 		}	
+		
 	}
 	
 	@Override

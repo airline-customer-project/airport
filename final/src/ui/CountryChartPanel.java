@@ -12,6 +12,7 @@ import dto.Airport;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.ScrollPane;
 import java.security.KeyStore.Entry;
@@ -95,15 +96,13 @@ public class CountryChartPanel extends JPanel implements Chart{
 			g.setColor(selectColor(name, country));
 			g.drawRect(100, y , width_h, height_w);
 			
-			g.setColor(Color.black);
+			g.setFont(new Font("남고딕",Font.PLAIN,12));
+			g.setColor((new Color(241,250,238)));
 			g.drawString(name, 0, y + 30);
 			//윤곽선
 			y += (height_w + 5);
 			
 		}
-		
-		g.setColor(new Color(0xf1f1f1));
-		g.fillRect(0, getHeight() - 50, getWidth(), 50);
 	}
 	
 	@Override

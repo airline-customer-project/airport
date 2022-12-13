@@ -44,7 +44,7 @@ public class StatisticsPanel extends JPanel{
 	public StatisticsPanel(JPanel jpanel) {
 		// TODO Auto-generated constructor stub
 		this.setLayout(new BorderLayout());
-		add(new JLabel("Statistics Panel"), BorderLayout.NORTH);
+		add(new JLabel("통계 창"), BorderLayout.NORTH);
 		add(jpanel, BorderLayout.CENTER);
 		
 		getStatisticsData(QUERY_COUNTRY);

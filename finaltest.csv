@@ -1,4 +1,1 @@
-1,A Coruna Airport,아코루냐 공항,LCG,LECO,유럽,Spain,스페인,A Coruna
-4,Adana Airport,아다나 공항,ADA,LTAF,유럽,Turkey,터키,Adana
-1,A Coruna Airport,아코루냐 공항,LCG,LECO,유럽,Spain,스페인,A Coruna
-4,Adana Airport,아다나 공항,ADA,LTAF,유럽,Turkey,터키,Adana
+id,공항이름(영문),공항이름(한글),IATA,LECO,대륙,나라이름(영문),나라이름(한글),도시이름(영문)
