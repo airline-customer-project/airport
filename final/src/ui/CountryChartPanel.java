@@ -89,15 +89,21 @@ public class CountryChartPanel extends JPanel implements Chart{
 			
 			g.setColor(selectColor(name, country));
 		
-			g.fillRect(0, y , width_h, height_w);
+			g.fillRect(100, y , width_h, height_w);
 			//채우기
 			//g.fillRect(getWidth() - width_h, y , width_h , height_w); 이건 오른쪽에서 나오는 그래프, 아래도 똑같이 하면 됨
 			g.setColor(selectColor(name, country));
-			g.drawRect(0, y , width_h, height_w);
+			g.drawRect(100, y , width_h, height_w);
+			
+			g.setColor(Color.black);
+			g.drawString(name, 0, y + 30);
 			//윤곽선
 			y += (height_w + 5);
 			
 		}
+		
+		g.setColor(new Color(0xf1f1f1));
+		g.fillRect(0, getHeight() - 50, getWidth(), 50);
 	}
 	
 	@Override

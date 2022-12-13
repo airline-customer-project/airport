@@ -41,7 +41,6 @@ public class RegionChartPanel extends JPanel implements Chart{
 			while (rs.next()) {		
 				String name = rs.getString("name");;
 				int value = rs.getInt("value");
-				//bar.put(name,value);
 				addBar(name,value,bar);
 			}
 		} catch(Exception e) {
@@ -69,9 +68,12 @@ public class RegionChartPanel extends JPanel implements Chart{
 		
 		int x = 30;
 		//이게 0 이면 첫번째 막대기가 왼쪽에 딱 붙음
+
 		
 		for(String name : region.keySet()) {
 			int value = region.get(name);
+			
+			System.out.println(name);
 			
 			value = value <= 10 ? 50 : value;
 			//1인경우 아예 그래프가 나오질 않아서 간단하게 조절해주는 코드, 50부분을 변경하면 원하는 크기로 설정 가능
@@ -81,13 +83,17 @@ public class RegionChartPanel extends JPanel implements Chart{
 			
 			g.setColor(selectColor(name, region));
 		
-			g.fillRect(x, getHeight() - height , width, height);
+			g.fillRect(x, getHeight() - height - 50 , width, height);
 			//채우기
 			g.setColor(selectColor(name, region));
-			g.drawRect(x, getHeight() - height, width, height);
+			g.drawRect(x, getHeight() - height - 50, width, height);
+			
+			
+			g.setColor(Color.black);
+			g.drawString(name, x, getHeight() - 30);
 			//윤곽선
 			x += (width + 10);
-		}
+		}	
 	}
 	
 	@Override
